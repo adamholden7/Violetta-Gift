@@ -107,6 +107,19 @@ body {
 .line2 { top: 30%; }
 .line3 { top: 65%; text-align: center; }
 
+.bouquet {
+    width: 120px; /* Reduced size */
+    height: auto;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Show bouquet when envelope opens */
+.open .bouquet {
+    opacity: 1;
+}
+
 /* Open envelope */
 .open .flap {
     transform: rotateX(180deg);
