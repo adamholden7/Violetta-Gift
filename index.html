@@ -7,23 +7,44 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="card-container" onclick="openCard()">
-        💌 Открой меня 💌
+    <div id="message-container" class="message-box" onclick="nextMessage()">
+        <p id="message-text">💌 Открой меня Виолетта 💌</p>
     </div>
+    
     <div id="flower-container" class="hidden">
         <img src="bouquet.png" alt="Beautiful Bouquet" class="bouquet">
+        <div id="banner" class="hidden">С 8 Марта! 💖 От Адама</div>
     </div>
 
     <script>
-        function openCard() {
-            document.querySelector(".card-container").style.display = "none";
+        let messages = [
+            "Ты самая прекрасная! 💕",
+            "Ты делаешь этот мир лучше! 🌎",
+            "Я благодарен за тебя каждый день! 😊",
+            "Пусть твой день будет наполнен радостью и любовью! 💖",
+            "💐 Этот букет для тебя! 💐"
+        ];
+        let messageIndex = 0;
+
+        function nextMessage() {
+            let messageText = document.getElementById("message-text");
+            if (messageIndex < messages.length) {
+                messageText.innerHTML = messages[messageIndex];
+                messageIndex++;
+            } else {
+                showFlowers();
+            }
+        }
+
+        function showFlowers() {
+            document.getElementById("message-container").style.display = "none";
             let bouquet = document.getElementById("flower-container");
             bouquet.classList.remove("hidden");
             
-            // Smooth fade-in effect
             setTimeout(() => {
                 document.querySelector(".bouquet").style.opacity = 1;
-            }, 200);
+                document.getElementById("banner").classList.remove("hidden");
+            }, 500);
         }
     </script>
 </body>
