@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 Марта! 🌸</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+    <h1>С 8 Марта, любимая! 🌸</h1>
+    <p>Пусть этот день будет таким же прекрасным, как ты!</p>
+    <div id="flower-container"></div>
+    
+    <script>
+        function setup() {
+            let canvas = createCanvas(400, 400);
+            canvas.parent('flower-container');
+            noLoop();
+        }
+        
+        function draw() {
+            background(255, 230, 242);
+            translate(width / 2, height / 2);
+            
+            for (let i = 0; i < 10; i++) {
+                push();
+                rotate(TWO_PI * i / 10);
+                drawPetal();
+                pop();
+            }
+            
+            drawCenter();
+        }
+        
+        function drawPetal() {
+            fill(255, 105, 180);
+            noStroke();
+            beginShape();
+            vertex(0, 0);
+            bezierVertex(50, -50, 100, -50, 100, 0);
+            bezierVertex(100, 50, 50, 50, 0, 0);
+            endShape(CLOSE);
+        }
+        
+        function drawCenter() {
+            fill(255, 204, 0);
+            ellipse(0, 0, 40, 40);
+        }
+    </script>
+</body>
+</html>
