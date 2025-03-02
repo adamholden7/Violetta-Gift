@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (envelope.classList.contains("open")) {
             document.querySelector(".letter").style.transform = "translateY(-140px)";
             document.querySelector(".letter").style.zIndex = "5"; 
-            document.querySelector(".bouquet").style.opacity = "1"; // Show bouquet
-            
+            document.querySelector(".flowers").style.opacity = "1"; // Show flowers
+
             // Show hearts
             document.querySelectorAll(".heart").forEach((heart) => {
                 heart.style.display = "block"; 
@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             document.querySelector(".letter").style.transform = "translateY(0)";
             document.querySelector(".letter").style.zIndex = "2"; 
-            document.querySelector(".bouquet").style.opacity = "0"; // Hide bouquet
-            
+            document.querySelector(".flowers").style.opacity = "0"; // Hide flowers
+
             // Hide hearts
             document.querySelectorAll(".heart").forEach((heart) => {
                 heart.style.display = "none";
