@@ -1,7 +1,5 @@
-// Get the card element
-const card = document.getElementById('card');
-
-// Toggle the 'open' class when the card is clicked
-card.addEventListener('click', () => {
-  card.classList.toggle('open');
+document.addEventListener("DOMContentLoaded", function() {
+    const card = document.querySelector(".card");
+    card.style.transform = "translateY(0)";
+    card.style.opacity = "1";
 });
