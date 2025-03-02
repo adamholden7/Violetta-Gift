@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="message-container" class="message-box" onclick="nextMessage()">
-        <p id="message-text">💌 Открой меня Виолетта 💌</p>
+    <div id="card-container" class="card" onclick="nextPage()">
+        <div id="card-page" class="page">
+            <p id="message-text">💌 Нажми, чтобы открыть 💌</p>
+            <p class="click-hint">(Нажми, чтобы перевернуть страницу)</p>
+        </div>
     </div>
     
     <div id="flower-container" class="hidden">
@@ -24,20 +27,26 @@
             "Пусть твой день будет наполнен радостью и любовью! 💖",
             "💐 Этот букет для тебя! 💐"
         ];
-        let messageIndex = 0;
+        let pageIndex = 0;
 
-        function nextMessage() {
+        function nextPage() {
             let messageText = document.getElementById("message-text");
-            if (messageIndex < messages.length) {
-                messageText.innerHTML = messages[messageIndex];
-                messageIndex++;
+            let card = document.getElementById("card-container");
+            
+            if (pageIndex < messages.length) {
+                card.classList.add("flip");
+                setTimeout(() => {
+                    messageText.innerHTML = messages[pageIndex];
+                    pageIndex++;
+                    card.classList.remove("flip");
+                }, 500);
             } else {
                 showFlowers();
             }
         }
 
         function showFlowers() {
-            document.getElementById("message-container").style.display = "none";
+            document.getElementById("card-container").style.display = "none";
             let bouquet = document.getElementById("flower-container");
             bouquet.classList.remove("hidden");
             
