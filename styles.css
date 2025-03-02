@@ -111,10 +111,11 @@ body {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 350px;
+    width: 200px; /* Increased size */
     height: auto;
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
+    z-index: 3; /* Ensure bouquet doesn't overlap hearts */
 }
 
 /* Show bouquet when envelope opens */
@@ -142,7 +143,7 @@ body {
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 4; /* Ensure hearts stay above bouquet */
     pointer-events: none;
 }
 
@@ -154,6 +155,13 @@ body {
     height: 30px;
     opacity: 0; /* Hidden initially */
     display: none; /* Hide until activated */
+}
+
+/* Hearts float up when envelope is opened */
+.open .heart {
+    opacity: 1;
+    display: block;
+    animation: slideUp 5s linear infinite, sideSway 2s ease-in-out infinite alternate;
 }
 
 /* Heart floating animations */
