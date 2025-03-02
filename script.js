@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 0; i < 1000; i++) {
         let flower = document.createElement("span");
         flower.classList.add("flower");
-        flower.textContent = ["🌸", "🌹", "🌼", "🌺", "💐", "🌷", "🌻", "💮", "🐇"][Math.floor(Math.random() * 8)];
+        flower.textContent = ["🌸", "🌹", "🌼", "🌺", "💐", "🌷", "🌻"][Math.floor(Math.random() * 8)];
         flowerExplosion.appendChild(flower);
     }
 
@@ -19,11 +19,21 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".letter").style.zIndex = "5"; 
             flowerExplosion.style.opacity = "1"; // Trigger explosion
 
-            // Make flowers explode and fill the screen
+            // Make flowers explode and fill the screen while avoiding the letter
             document.querySelectorAll(".flower").forEach((flower, index) => {
                 setTimeout(() => {
+                    let x = Math.random() * window.innerWidth - window.innerWidth / 2;
+                    let y = Math.random() * window.innerHeight - window.innerHeight / 2;
+                    let letterBox = document.querySelector(".letter").getBoundingClientRect();
+
+                    // Ensure flowers don't overlap the letter
+                    if (x > letterBox.left - 50 && x < letterBox.right + 50 && y > letterBox.top - 50 && y < letterBox.bottom + 50) {
+                        x += 100 * (Math.random() > 0.5 ? 1 : -1);
+                        y += 100 * (Math.random() > 0.5 ? 1 : -1);
+                    }
+
                     flower.style.opacity = "1";
-                    flower.style.transform = `translate(${Math.random() * window.innerWidth - window.innerWidth / 2}px, ${Math.random() * window.innerHeight - window.innerHeight / 2}px) rotate(${Math.random() * 360}deg) scale(${Math.random() * 1.5 + 0.5})`;
+                    flower.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg) scale(${Math.random() * 1.5 + 0.5})`;
                 }, index * 5);
             });
 
