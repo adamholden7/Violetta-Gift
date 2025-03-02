@@ -105,24 +105,6 @@ body {
 .line2 { top: 30%; }
 .line3 { top: 65%; text-align: center; }
 
-/* Show bouquet on screen when opened */
-.bouquet {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px; /* Increased size */
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 3; /* Ensure bouquet doesn't overlap hearts */
-}
-
-/* Show bouquet when envelope opens */
-.open ~ .bouquet {
-    opacity: 1;
-}
-
 /* Open envelope */
 .open .flap {
     transform: rotateX(180deg);
@@ -173,6 +155,24 @@ body {
 @keyframes sideSway {
     0% { transform: translateX(0); }
     100% { transform: translateX(30px); }
+}
+
+/* Show bouquet on screen when opened */
+.bouquet {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; /* Increased size */
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 3; /* Ensure bouquet doesn't overlap hearts */
+}
+
+/* Show bouquet when envelope opens */
+.open ~ .bouquet {
+    opacity: 1;
 }
 
 /* Flowers hidden initially */
