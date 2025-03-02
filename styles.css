@@ -59,8 +59,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+    opacity: 0;  /* Start invisible */
+    transition: opacity 1s ease-in-out;
 }
 
 /* 🐰 Rabbit Animation (Fixed Size & Position) */
@@ -85,8 +85,8 @@ body {
 .bouquet {
     width: 80%;
     border-radius: 8px;
-    opacity: 0;
-    animation: fadeIn 3s ease-in-out forwards;
+    opacity: 0;  /* Start hidden */
+    transition: opacity 2s ease-in-out; /* Smooth fade-in */
 }
 
 /* 🌸 Flower Fade-in Animation */
