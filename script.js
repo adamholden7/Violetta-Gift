@@ -6,16 +6,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const bouquet = document.querySelector(".bouquet");
 
     openButton.addEventListener("click", function() {
-        // Hide the envelope
+        // Hide the start screen (envelope)
         startScreen.classList.add("hidden");
 
-        // Show the rabbit and make it hop
+        // Show the card and rabbit
         card.classList.remove("hidden");
+        card.style.opacity = "1";  // Make sure the card appears
 
-        // After bunny finishes hopping (4.5s), remove it and show bouquet
+        // Let the rabbit hop, then hide it and show the bouquet
         setTimeout(() => {
             rabbit.classList.add("hidden"); // Hide bunny
-            bouquet.style.opacity = "1"; // Show bouquet smoothly
+            bouquet.style.opacity = "1"; // Make bouquet fully visible
         }, 4500); // Matches animation duration
     });
 });
