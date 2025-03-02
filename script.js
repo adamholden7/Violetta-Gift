@@ -1,15 +1,18 @@
-$(document).ready(function() {
-    var envelope = $("#envelope");
+document.addEventListener("DOMContentLoaded", function () {
+    var envelope = document.getElementById("envelope");
 
-    envelope.click(function() {
-        envelope.toggleClass("open close");
+    envelope.addEventListener("click", function () {
+        envelope.classList.toggle("open");
+        envelope.classList.toggle("close");
 
-        if (envelope.hasClass("open")) {
-            $(".letter").css("transform", "translateY(-120px)").css("z-index", "5"); // Move letter up
-            $(".flowers").css("opacity", "1"); // Show flowers
+        if (envelope.classList.contains("open")) {
+            document.querySelector(".letter").style.transform = "translateY(-140px)";
+            document.querySelector(".letter").style.zIndex = "5"; 
+            document.querySelector(".bouquet").style.opacity = "1"; // Show bouquet
         } else {
-            $(".letter").css("transform", "translateY(0)").css("z-index", "2"); // Reset letter
-            $(".flowers").css("opacity", "0"); // Hide flowers
+            document.querySelector(".letter").style.transform = "translateY(0)";
+            document.querySelector(".letter").style.zIndex = "2"; 
+            document.querySelector(".bouquet").style.opacity = "0"; // Hide bouquet
         }
     });
 });
