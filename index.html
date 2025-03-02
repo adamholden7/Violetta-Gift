@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="card-container" class="card" onclick="nextPage()">
-        <div id="card-page" class="page">
-            <p id="message-text">💌 Нажми, чтобы открыть 💌</p>
-            <p class="click-hint">(Нажми, чтобы перевернуть страницу)</p>
-        </div>
+    <div id="book-container" class="card" onclick="nextPage()">
+        <div id="book" class="book cover">💌 Нажми, чтобы открыть 💌</div>
+        <div class="page" id="message-text">(Нажми, чтобы перевернуть страницу)</div>
     </div>
     
     <div id="flower-container" class="hidden">
@@ -19,42 +17,6 @@
         <div id="banner" class="hidden">С 8 Марта! 💖 От Адама</div>
     </div>
 
-    <script>
-        let messages = [
-            "Ты самая прекрасная! 💕",
-            "Ты делаешь этот мир лучше! 🌎",
-            "Я благодарен за тебя каждый день! 😊",
-            "Пусть твой день будет наполнен радостью и любовью! 💖",
-            "💐 Этот букет для тебя! 💐"
-        ];
-        let pageIndex = 0;
-
-        function nextPage() {
-            let messageText = document.getElementById("message-text");
-            let card = document.getElementById("card-container");
-            
-            if (pageIndex < messages.length) {
-                card.classList.add("flip");
-                setTimeout(() => {
-                    messageText.innerHTML = messages[pageIndex];
-                    pageIndex++;
-                    card.classList.remove("flip");
-                }, 500);
-            } else {
-                showFlowers();
-            }
-        }
-
-        function showFlowers() {
-            document.getElementById("card-container").style.display = "none";
-            let bouquet = document.getElementById("flower-container");
-            bouquet.classList.remove("hidden");
-            
-            setTimeout(() => {
-                document.querySelector(".bouquet").style.opacity = 1;
-                document.getElementById("banner").classList.remove("hidden");
-            }, 500);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
