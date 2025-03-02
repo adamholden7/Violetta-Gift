@@ -92,7 +92,7 @@ body {
 
 /* Letter text remains readable */
 .words {
-    position: absolute;
+    position: relative;
     left: 10%;
     width: 80%;
     font-size: 16px;
