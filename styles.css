@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     font-family: 'Arial', sans-serif;
     background: #fce4ec;
@@ -9,12 +10,12 @@ body {
     overflow: hidden;
 }
 
-/* Hidden by default */
+/* Hidden Class */
 .hidden {
     display: none;
 }
 
-/* Envelope (Start Screen) */
+/* 💌 Envelope (Start Screen) */
 .start-screen {
     display: flex;
     flex-direction: column;
@@ -45,13 +46,14 @@ body {
     border-radius: 6px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background 0.3s ease-in-out;
 }
 
 .open-button:hover {
     background: #ad1457;
 }
 
-/* Card Reveal */
+/* 🎉 Card Reveal */
 .card {
     position: absolute;
     top: 50%;
@@ -61,32 +63,39 @@ body {
     transition: opacity 2s ease-in-out;
 }
 
+/* 🐰 Rabbit Animation (Fixed Size & Position) */
 .rabbit {
-    width: 100px;
+    width: 60px; /* Smaller size */
     position: absolute;
-    bottom: -50px;
+    bottom: 50px;
     left: 10%;
-    animation: hop 2s ease-in-out infinite;
+    animation: hop 1.5s ease-in-out 3; /* Stops after 3 hops */
 }
 
-/* Rabbit hopping effect */
+/* 🐇 Rabbit Hopping Animation */
 @keyframes hop {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-30px); }
+    0% { transform: translate(0, 0); }
+    30% { transform: translate(50px, -20px); }
+    60% { transform: translate(100px, 0); }
+    90% { transform: translate(150px, -20px); }
+    100% { transform: translate(200px, 0); }
 }
 
-/* Flowers fade-in after rabbit animation */
+/* 💐 Flowers fade in after bunny animation */
 .bouquet {
     width: 80%;
     border-radius: 8px;
+    opacity: 0;
     animation: fadeIn 3s ease-in-out forwards;
 }
 
+/* 🌸 Flower Fade-in Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
 
+/* 📝 Text Styles */
 h1 {
     color: #d81b60;
     font-size: 24px;
