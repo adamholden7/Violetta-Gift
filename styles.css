@@ -6,21 +6,85 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    animation: fadeIn 2s ease-in-out;
+/* Hidden by default */
+.hidden {
+    display: none;
 }
 
-.bouquet {
-    width: 100%;
+/* Envelope (Start Screen) */
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.envelope {
+    background: #ffb6c1;
+    padding: 30px 50px;
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8b0000;
+}
+
+.open-button {
+    background: #d81b60;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.open-button:hover {
+    background: #ad1457;
+}
+
+/* Card Reveal */
+.card {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.rabbit {
+    width: 100px;
+    position: absolute;
+    bottom: -50px;
+    left: 10%;
+    animation: hop 2s ease-in-out infinite;
+}
+
+/* Rabbit hopping effect */
+@keyframes hop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+/* Flowers fade-in after rabbit animation */
+.bouquet {
+    width: 80%;
+    border-radius: 8px;
+    animation: fadeIn 3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
@@ -38,9 +102,4 @@ h1 {
     font-size: 16px;
     font-style: italic;
     color: #666;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
 }
