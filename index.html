@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy March 8th!</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="index.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <title>Virtual March 8th Card</title>
+    </head>
+    <body>
 
-    <div class="card">
-        <div class="card-front">
-            <h1>💐 Tap to Open 💐</h1>
-        </div>
-        <div class="card-inside">
-            <div class="bouquet">
-                <img src="flowers.png" alt="Bouquet of Tulips and Roses">
+        <div class="envelope-wrapper">
+            <div id="envelope" class="close">
+                <div class="front flap"></div>
+                <div class="front pocket"></div>
+                <div class="letter">
+                    <p class="words line1">Виолетта,</p>
+                    <p class="words line2">Поздравляю с Восьмым Марта!     I hope I can give you flowers in person next time!</p>
+                    <p class="words line3"> От: Aдам</p>
+                </div>
+                <div class="hearts">
+                  <div class="heart" style="left: 10%; animation-delay: 0.2s;"></div>
+                  <div class="heart" style="left: 20%; animation-delay: 0.8s;"></div>
+                  <div class="heart" style="left: 30%; animation-delay: 1.2s;"></div>
+                  <div class="heart" style="left: 40%; animation-delay: 0.5s;"></div>
+                  <div class="heart" style="left: 50%; animation-delay: 1.7s;"></div>
+                  <div class="heart" style="left: 60%; animation-delay: 0.3s;"></div>
+                  <div class="heart" style="left: 70%; animation-delay: 2s;"></div>
+                  <div class="heart" style="left: 80%; animation-delay: 1s;"></div>
+                  <div class="heart" style="left: 90%; animation-delay: 1.5s;"></div>
+              </div>
             </div>
-            <p class="message">Happy March 8th Violet! Wishing you joy, love, and endless happiness. 🌷🌹✨</p>
         </div>
-    </div>
 
-    <script src="script.js"></script>
+        <!-- Flowers (Hidden initially, appear after opening) -->
+        <div class="flowers">🌸 🌹 🌼 🌺 💐</div>
 
-</body>
+        <script src="index.js"></script>
+    </body>
 </html>
