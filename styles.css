@@ -15,100 +15,44 @@ body {
     display: none;
 }
 
-/* 💌 Envelope (Start Screen) */
-.start-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.envelope {
-    background: #ffb6c1;
-    padding: 30px 50px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #8b0000;
-}
-
-.open-button {
-    background: #d81b60;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease-in-out;
-}
-
-.open-button:hover {
-    background: #ad1457;
-}
-
-/* 🎉 Card Reveal */
+/* Fix for Chrome & Mobile where the card wasn't fully appearing */
 .card {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
-    opacity: 0;  /* Start invisible */
+    opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
-/* 🐰 Rabbit Animation (Fixed Size & Position) */
+/* 🐰 Fix Bunny Size & Faster Hops */
 .rabbit {
-    width: 60px; /* Smaller size */
+    width: 50px; /* Smaller for better placement */
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     left: 10%;
-    animation: hop 1.5s ease-in-out 3; /* Stops after 3 hops */
+    animation: hop 1s ease-in-out 2; /* Faster hop, only 2 times */
 }
 
-/* 🐇 Rabbit Hopping Animation */
+/* 🐇 Rabbit Hopping (Smoother, Faster) */
 @keyframes hop {
     0% { transform: translate(0, 0); }
-    30% { transform: translate(50px, -20px); }
-    60% { transform: translate(100px, 0); }
-    90% { transform: translate(150px, -20px); }
-    100% { transform: translate(200px, 0); }
+    50% { transform: translate(50px, -15px); }
+    100% { transform: translate(100px, 0); }
 }
 
 /* 💐 Flowers fade in after bunny animation */
 .bouquet {
     width: 80%;
     border-radius: 8px;
-    opacity: 0;  /* Start hidden */
-    transition: opacity 2s ease-in-out; /* Smooth fade-in */
+    opacity: 0;  
+    transition: opacity 1.5s ease-in-out; /* Faster fade-in */
 }
 
-/* 🌸 Flower Fade-in Animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* 📝 Text Styles */
-h1 {
-    color: #d81b60;
-    font-size: 24px;
-}
-
-.message {
-    font-size: 18px;
-    color: #444;
-    margin: 10px 0;
-}
-
-.signature {
-    font-size: 16px;
-    font-style: italic;
-    color: #666;
+/* ✨ Mobile Fix - Make Text More Readable */
+@media (max-width: 768px) {
+    .card {
+        width: 90%; /* Ensure text fits on smaller screens */
+        font-size: 16px; /* Adjust font size for mobile */
+    }
 }
