@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     var envelope = document.getElementById("envelope");
+    var flowerExplosion = document.querySelector(".flower-explosion");
+
+    // Generate 1000 flowers dynamically for a massive explosion
+    for (let i = 0; i < 1000; i++) {
+        let flower = document.createElement("span");
+        flower.classList.add("flower");
+        flower.textContent = ["🌸", "🌹", "🌼", "🌺", "💐", "🌷", "🌻", "💮", "🐇"][Math.floor(Math.random() * 8)];
+        flowerExplosion.appendChild(flower);
+    }
 
     envelope.addEventListener("click", function () {
         envelope.classList.toggle("open");
@@ -8,23 +17,25 @@ document.addEventListener("DOMContentLoaded", function () {
         if (envelope.classList.contains("open")) {
             document.querySelector(".letter").style.transform = "translateY(-140px)";
             document.querySelector(".letter").style.zIndex = "5"; 
-            document.querySelector(".flowers").style.opacity = "1"; // Show flowers
+            flowerExplosion.style.opacity = "1"; // Trigger explosion
 
-            // Show hearts
-            document.querySelectorAll(".heart").forEach((heart) => {
-                heart.style.display = "block"; 
-                heart.style.opacity = "1";
+            // Make flowers explode and fill the screen
+            document.querySelectorAll(".flower").forEach((flower, index) => {
+                setTimeout(() => {
+                    flower.style.opacity = "1";
+                    flower.style.transform = `translate(${Math.random() * window.innerWidth - window.innerWidth / 2}px, ${Math.random() * window.innerHeight - window.innerHeight / 2}px) rotate(${Math.random() * 360}deg) scale(${Math.random() * 1.5 + 0.5})`;
+                }, index * 5);
             });
 
         } else {
             document.querySelector(".letter").style.transform = "translateY(0)";
             document.querySelector(".letter").style.zIndex = "2"; 
-            document.querySelector(".flowers").style.opacity = "0"; // Hide flowers
+            flowerExplosion.style.opacity = "0"; // Reset explosion
 
-            // Hide hearts
-            document.querySelectorAll(".heart").forEach((heart) => {
-                heart.style.display = "none";
-                heart.style.opacity = "0";
+            // Reset flower positions
+            document.querySelectorAll(".flower").forEach((flower) => {
+                flower.style.opacity = "0";
+                flower.style.transform = "translate(0, 0) rotate(0deg) scale(1)";
             });
         }
     });
