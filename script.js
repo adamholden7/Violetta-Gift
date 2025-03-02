@@ -8,15 +8,15 @@ let messages = [
 let pageIndex = 0;
 
 function nextPage() {
+    let book = document.getElementById("book");
     let messageText = document.getElementById("message-text");
-    let card = document.getElementById("card-container");
-
+    
     if (pageIndex < messages.length) {
-        card.classList.add("flip");
+        book.classList.add("turning");
         setTimeout(() => {
             messageText.innerHTML = messages[pageIndex];
             pageIndex++;
-            card.classList.remove("flip");
+            book.classList.remove("turning");
         }, 800);
     } else {
         showFlowers();
@@ -24,7 +24,7 @@ function nextPage() {
 }
 
 function showFlowers() {
-    document.getElementById("card-container").style.display = "none";
+    document.getElementById("book-container").style.display = "none";
     let bouquet = document.getElementById("flower-container");
     bouquet.classList.remove("hidden");
 
