@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>С 8 Марта! 🌸</title>
+    <title>С 8 Марта, любимая! 💖</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <style>
         body {
@@ -17,8 +17,23 @@
             text-align: center;
             overflow: hidden;
         }
-        h1 {
-            color: #d63384;
+        .card-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+        }
+        .hidden {
+            display: none;
         }
         canvas {
             display: block;
@@ -26,15 +41,22 @@
     </style>
 </head>
 <body>
-    <h1>С 8 Марта, любимая! 💐</h1>
-    <p>Пусть этот день будет таким же прекрасным, как ты! Test Adam Updates</p>
-    <div id="flower-container"></div>
+    <div class="card-container" onclick="openCard()">
+        💌 Открой меня 💌
+    </div>
+    <div id="flower-container" class="hidden"></div>
     
     <script>
         let flowers = [];
         let bouquetSize = 30;
         
-        function setup() {
+        function openCard() {
+            document.querySelector(".card-container").style.display = "none";
+            document.getElementById("flower-container").classList.remove("hidden");
+            setupCanvas();
+        }
+        
+        function setupCanvas() {
             let canvas = createCanvas(windowWidth, windowHeight);
             canvas.parent('flower-container');
             for (let i = 0; i < bouquetSize; i++) {
