@@ -4,127 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>С 8 Марта, любимая! 💖</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #ffe6f2;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            overflow: hidden;
-        }
-        .card-container {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.5s ease-in-out;
-        }
-        .hidden {
-            display: none;
-        }
-        canvas {
-            display: block;
-        }
-    </style>
 </head>
 <body>
     <div class="card-container" onclick="openCard()">
         💌 Открой меня 💌
     </div>
     <div id="flower-container" class="hidden"></div>
-    
-    <script>
-        let flowers = [];
-        let bouquetSize = 30;
-        
-        function openCard() {
-            document.querySelector(".card-container").style.display = "none";
-            document.getElementById("flower-container").classList.remove("hidden");
-            setupCanvas();
-        }
-        
-        function setupCanvas() {
-            let canvas = createCanvas(windowWidth, windowHeight);
-            canvas.parent('flower-container');
-            for (let i = 0; i < bouquetSize; i++) {
-                let x = width / 2 + random(-100, 100);
-                let y = height + random(50, 200);
-                flowers.push(new Flower(x, y, random(10, 30), random(50, 100)));
-            }
-        }
-        
-        function draw() {
-            background(255, 230, 242);
-            for (let flower of flowers) {
-                flower.bloom();
-                flower.show();
-            }
-        }
-        
-        class Flower {
-            constructor(x, y, size, maxSize) {
-                this.x = x;
-                this.y = y;
-                this.size = size;
-                this.maxSize = maxSize;
-                this.growing = true;
-                this.ySpeed = random(1, 3);
-            }
-            
-            bloom() {
-                if (this.growing && this.size < this.maxSize) {
-                    this.size += 0.5;
-                }
-                if (this.y > height / 2) {
-                    this.y -= this.ySpeed;
-                } else {
-                    this.growing = false;
-                }
-            }
-            
-            show() {
-                push();
-                translate(this.x, this.y);
-                for (let i = 0; i < 10; i++) {
-                    rotate(TWO_PI * i / 10);
-                    this.drawPetal();
-                }
-                this.drawCenter();
-                pop();
-            }
-            
-            drawPetal() {
-                fill(random(200, 255), random(50, 150), random(50, 150), 180);
-                noStroke();
-                beginShape();
-                vertex(0, 0);
-                bezierVertex(this.size, -this.size, this.size * 2, -this.size, this.size * 2, 0);
-                bezierVertex(this.size * 2, this.size, this.size, this.size, 0, 0);
-                endShape(CLOSE);
-            }
-            
-            drawCenter() {
-                fill(255, 204, 0);
-                ellipse(0, 0, this.size * 0.5, this.size * 0.5);
-            }
-        }
-        
-        function windowResized() {
-            resizeCanvas(windowWidth, windowHeight);
-        }
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
