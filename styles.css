@@ -19,6 +19,8 @@ body {
     margin-bottom: 20px;
 }
 
+
+
 /* Envelope wrapper stays the same */
 .envelope-wrapper {
     height: 475px;
@@ -92,7 +94,7 @@ body {
 
 /* Letter text remains readable */
 .words {
-    position: relative;
+    position: absolute;
     left: 10%;
     width: 80%;
     font-size: 16px;
@@ -125,7 +127,7 @@ body {
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 4; /* Ensure hearts stay above bouquet */
+    z-index: 2;
     pointer-events: none;
 }
 
@@ -137,6 +139,33 @@ body {
     height: 30px;
     opacity: 0; /* Hidden initially */
     display: none; /* Hide until activated */
+}
+
+/* Heart shape */
+.heart:before, .heart:after {
+    position: absolute;
+    content: "";
+    background: #d00000;
+    width: 30px;
+    height: 40px;
+    left: 15px;
+    top: 0;
+    border-radius: 15px 15px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart:after {
+    left: -15px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Hearts hidden initially */
+.close .heart {
+    opacity: 0;
+    animation: none;
+    display: none;
 }
 
 /* Hearts float up when envelope is opened */
@@ -157,23 +186,6 @@ body {
     100% { transform: translateX(30px); }
 }
 
-/* Show bouquet on screen when opened */
-.bouquet {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px; /* Increased size */
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 3; /* Ensure bouquet doesn't overlap hearts */
-}
-
-/* Show bouquet when envelope opens */
-.open ~ .bouquet {
-    opacity: 1;
-}
 
 /* Flowers hidden initially */
 .flowers {
