@@ -19,6 +19,9 @@
         h1 {
             color: #d63384;
         }
+        canvas {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -27,39 +30,63 @@
     <div id="flower-container"></div>
     
     <script>
+        let flowers = [];
+        
         function setup() {
-            let canvas = createCanvas(400, 400);
+            let canvas = createCanvas(500, 500);
             canvas.parent('flower-container');
-            noLoop();
+            for (let i = 0; i < 10; i++) {
+                flowers.push(new Flower(random(width), random(height)));
+            }
         }
         
         function draw() {
             background(255, 230, 242);
-            translate(width / 2, height / 2);
+            for (let flower of flowers) {
+                flower.show();
+                flower.bloom();
+            }
+        }
+        
+        class Flower {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = 10;
+                this.growing = true;
+            }
             
-            for (let i = 0; i < 10; i++) {
+            bloom() {
+                if (this.growing && this.size < 50) {
+                    this.size += 0.5;
+                }
+            }
+            
+            show() {
                 push();
-                rotate(TWO_PI * i / 10);
-                drawPetal();
+                translate(this.x, this.y);
+                for (let i = 0; i < 10; i++) {
+                    rotate(TWO_PI * i / 10);
+                    this.drawPetal();
+                }
+                this.drawCenter();
                 pop();
             }
             
-            drawCenter();
-        }
-        
-        function drawPetal() {
-            fill(255, 105, 180);
-            noStroke();
-            beginShape();
-            vertex(0, 0);
-            bezierVertex(50, -50, 100, -50, 100, 0);
-            bezierVertex(100, 50, 50, 50, 0, 0);
-            endShape(CLOSE);
-        }
-        
-        function drawCenter() {
-            fill(255, 204, 0);
-            ellipse(0, 0, 40, 40);
+            drawPetal() {
+                fill(255, 105, 180);
+                noStroke();
+                beginShape();
+                vertex(0, 0);
+                bezierVertex(this.size, -this.size, this.size * 2, -this.size, this.size * 2, 0);
+                bezierVertex(this.size * 2, this.size, this.size, this.size, 0, 0);
+                endShape(CLOSE);
+            }
+            
+            drawCenter() {
+                fill(255, 204, 0);
+                ellipse(0, 0, this.size * 0.8, this.size * 0.8);
+            }
         }
     </script>
 </body>
