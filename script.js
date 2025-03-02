@@ -9,11 +9,13 @@ document.addEventListener("DOMContentLoaded", function() {
         // Hide the envelope
         startScreen.classList.add("hidden");
 
-        // Show the rabbit and start hopping
+        // Show the rabbit and make it hop
         card.classList.remove("hidden");
+
+        // After bunny finishes hopping (4.5s), remove it and show bouquet
         setTimeout(() => {
-            rabbit.classList.add("hidden"); // Hide rabbit after it hops
-            bouquet.classList.remove("hidden"); // Show bouquet after rabbit disappears
-        }, 3000); // Wait for rabbit animation to finish
+            rabbit.classList.add("hidden"); // Hide bunny
+            bouquet.style.opacity = "1"; // Show bouquet smoothly
+        }, 4500); // Matches animation duration
     });
 });
