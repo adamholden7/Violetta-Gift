@@ -1,107 +1,46 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: #fce4ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Card Container */
-.card-container {
-  perspective: 1200px;
-}
-
-/* Card Style */
 .card {
-  width: 300px;
-  height: 400px;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-  cursor: pointer;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    animation: fadeIn 2s ease-in-out;
 }
 
-/* Flip the card when open */
-.card.open {
-  transform: rotateY(180deg);
+.bouquet {
+    width: 100%;
+    border-radius: 8px;
 }
 
-/* Card Faces */
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+h1 {
+    color: #d81b60;
+    font-size: 24px;
 }
 
-/* Front face styling */
-.card-front {
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  text-align: center;
+.message {
+    font-size: 18px;
+    color: #444;
+    margin: 10px 0;
 }
 
-/* Back face styling */
-.card-back {
-  background: #ffeef8;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transform: rotateY(180deg);
-  text-align: center;
-  position: relative;
+.signature {
+    font-size: 16px;
+    font-style: italic;
+    color: #666;
 }
 
-/* Flower container and style */
-.flowers {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-/* Each flower uses CSS to create a simple SVG-like flower using radial gradients */
-.flower {
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle at 50% 50%, #ff69b4 30%, transparent 31%),
-              radial-gradient(circle at 20% 20%, #ff69b4 30%, transparent 31%),
-              radial-gradient(circle at 80% 20%, #ff69b4 30%, transparent 31%),
-              radial-gradient(circle at 20% 80%, #ff69b4 30%, transparent 31%),
-              radial-gradient(circle at 80% 80%, #ff69b4 30%, transparent 31%);
-  border-radius: 50%;
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: calc(0.3s * var(--i));
-}
-
-/* Flower fade in animation */
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Optional text styling */
-h2 {
-  margin-bottom: 10px;
-  color: #d63384;
-}
-
-p {
-  color: #555;
-  font-size: 1rem;
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
