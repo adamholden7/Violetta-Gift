@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Women's Day, Violet!</title>
+    <title>Подарок для Виолетты 💖</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="card">
-        <img src="bouquet_flowers.png" alt="Beautiful Bouquet" class="bouquet">
-        <h1>Happy Women's Day, Violet! 💐</h1>
-        <p class="message">Though I can't be there, I wanted to send you something special. You deserve all the beauty and love in the world. Hope this brings a smile to your face. 💖</p>
-        <p class="signature">Adam</p>
+
+    <!-- Step 1: Envelope with "Open Me" Button -->
+    <div class="start-screen">
+        <div class="envelope">
+            <p class="name">Виолетта</p>
+            <button class="open-button">Открыть меня 💌</button>
+        </div>
     </div>
+
+    <!-- Step 2: Rabbit Animation + Card Reveal -->
+    <div class="card hidden">
+        <img src="rabbit.png" alt="Hopping Rabbit" class="rabbit">
+        <div class="flower-container">
+            <img src="bouquet_flowers.png" alt="Beautiful Bouquet" class="bouquet hidden">
+            <h1>С 8 марта, Виолетта! 💐</h1>
+            <p class="message">Ты особенная и заслуживаешь всю красоту в мире. Пусть этот день принесёт тебе радость и улыбки! 💖</p>
+            <p class="signature">С теплом, Адам</p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+
 </body>
 </html>
