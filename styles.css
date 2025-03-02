@@ -209,3 +209,67 @@ body {
     font-size: 70px;
     margin: 150px;
 }
+/* Flower explosion container */
+.flower-explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Individual flower emojis */
+.flower {
+    font-size: 30px; /* Make the flowers larger */
+    position: absolute;
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.5s ease-in-out;
+}
+
+/* Flower explosion effect (random directions) */
+.open ~ .flower-explosion {
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(1) { 
+    transform: translate(-150px, -200px) rotate(20deg) scale(1.3); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(2) { 
+    transform: translate(120px, -180px) rotate(-15deg) scale(1.2); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(3) { 
+    transform: translate(-100px, -250px) rotate(30deg) scale(1.1); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(4) { 
+    transform: translate(90px, -220px) rotate(-25deg) scale(1.4); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(5) { 
+    transform: translate(-130px, -180px) rotate(15deg) scale(1.3); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(6) { 
+    transform: translate(100px, -200px) rotate(-10deg) scale(1.2); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(7) { 
+    transform: translate(-120px, -150px) rotate(10deg) scale(1.2); 
+    opacity: 1;
+}
+
+.open ~ .flower-explosion .flower:nth-child(8) { 
+    transform: translate(150px, -170px) rotate(-12deg) scale(1.4); 
+    opacity: 1;
+}
