@@ -14,6 +14,17 @@
         <img src="bouquet.png" alt="Beautiful Bouquet" class="bouquet">
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function openCard() {
+            document.querySelector(".card-container").style.display = "none";
+            let bouquet = document.getElementById("flower-container");
+            bouquet.classList.remove("hidden");
+            
+            // Smooth fade-in effect
+            setTimeout(() => {
+                document.querySelector(".bouquet").style.opacity = 1;
+            }, 200);
+        }
+    </script>
 </body>
 </html>
