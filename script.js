@@ -1,14 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
     var envelope = document.getElementById("envelope");
-    var flowerExplosion = document.querySelector(".flower-explosion");
 
-    // Generate 1000 flowers dynamically for a massive explosion
-    for (let i = 0; i < 1000; i++) {
-        let flower = document.createElement("span");
-        flower.classList.add("flower");
-        flower.textContent = ["🌸", "🌹", "🌼", "🌺", "💐", "🌷"][Math.floor(Math.random() * 1)];
-        flowerExplosion.appendChild(flower);
-    }
+    // Create bouquet element dynamically
+    var bouquetContainer = document.createElement("div");
+    bouquetContainer.classList.add("bouquet-container");
+
+    var bouquetImg = document.createElement("img");
+    bouquetImg.src = "bouquet.png"; // Replace with the actual image path
+    bouquetImg.classList.add("bouquet");
+
+    bouquetContainer.appendChild(bouquetImg);
+    document.body.appendChild(bouquetContainer);
+
+    // Create heart container for animation
+    var heartContainer = document.createElement("div");
+    heartContainer.classList.add("bouquet-hearts");
+    document.body.appendChild(heartContainer);
 
     envelope.addEventListener("click", function () {
         envelope.classList.toggle("open");
@@ -17,41 +24,35 @@ document.addEventListener("DOMContentLoaded", function () {
         if (envelope.classList.contains("open")) {
             document.querySelector(".letter").style.transform = "translateY(-140px)";
             document.querySelector(".letter").style.zIndex = "10"; 
-            flowerExplosion.style.opacity = "1"; // Trigger explosion
 
-            // Get letter dimensions to avoid overlap
-            let letterBox = document.querySelector(".letter").getBoundingClientRect();
+            // Animate bouquet rising from the bottom
+            bouquetContainer.style.bottom = "50px";
 
-            // Make flowers explode and fill the screen while avoiding the letter
-            document.querySelectorAll(".flower").forEach((flower, index) => {
+            // Emit hearts from the bouquet
+            for (let i = 0; i < 10; i++) { // Create 10 floating hearts
+                let heart = document.createElement("span");
+                heart.classList.add("bouquet-heart");
+                heart.textContent = "❤️";
+
+                let randomX = Math.random() * 100 - 50; // Spread hearts left & right
+                heart.style.left = `calc(50% + ${randomX}px)`;
+
+                heartContainer.appendChild(heart);
+
                 setTimeout(() => {
-                    let x, y;
-                    let attempts = 0;
-                    do {
-                        x = Math.random() * window.innerWidth - window.innerWidth / 2;
-                        y = Math.random() * window.innerHeight - window.innerHeight / 2;
-                        attempts++;
-                    } while (
-                        attempts < 10 &&
-                        x > letterBox.left - 50 && x < letterBox.right + 50 &&
-                        y > letterBox.top - 50 && y < letterBox.bottom + 50
-                    );
+                    heart.style.opacity = "1";
+                    heart.style.transform = `translateY(-600px) rotate(${Math.random() * 20 - 10}deg)`;
+                }, i * 300); // Staggered effect
 
-                    flower.style.opacity = "1";
-                    flower.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg) scale(${Math.random() * 1.5 + 0.5})`;
-                }, index * 5);
-            });
+                setTimeout(() => heart.remove(), 5000); // Cleanup hearts
+            }
 
         } else {
             document.querySelector(".letter").style.transform = "translateY(0)";
             document.querySelector(".letter").style.zIndex = "2"; 
-            flowerExplosion.style.opacity = "0"; // Reset explosion
 
-            // Reset flower positions
-            document.querySelectorAll(".flower").forEach((flower) => {
-                flower.style.opacity = "0";
-                flower.style.transform = "translate(0, 0) rotate(0deg) scale(1)";
-            });
+            // Reset bouquet position
+            bouquetContainer.style.bottom = "-150px";
         }
     });
 });
