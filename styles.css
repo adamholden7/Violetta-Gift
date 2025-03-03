@@ -1,4 +1,4 @@
-/* Background remains the same with soft glowing effect */
+/* Background remains the same */
 @keyframes backgroundGlow {
     0% { background-color: #ffc3da; }
     50% { background-color: #ff9eb5; }
@@ -9,7 +9,6 @@ body {
     background-color: #ffc3da;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    animation: backgroundGlow 5s infinite alternate;
 }
 
 /* Message for Violet - Styled beautifully */
@@ -25,6 +24,8 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
 }
+
+
 
 /* Envelope wrapper stays the same */
 .envelope-wrapper {
@@ -44,7 +45,6 @@ body {
     background-color: #FF6863;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: 0.4s ease-in-out;
-    animation: envelopeBounce 1s ease-in-out;
 }
 
 /* Envelope hover effect */
@@ -54,66 +54,221 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Envelope front flap */
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3; /* Higher than pocket, but lower than letter when open */
+}
+
+/* Flap shape */
+.flap {
+    border-top: 122.5px solid #FF6863;
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+    border-bottom: 102.5px solid transparent;
+    transform-origin: top;
+    transition: transform 0.4s ease-in-out, z-index 0.6s;
+    z-index: 4; /* Make sure flap is under the letter */
+}
+
+/* Envelope pocket */
+.pocket {
+    border-left: 175px solid #FF8BA0;
+    border-right: 175px solid #FF8BA0;
+    border-bottom: 112.5px solid #FFA8B5;
+    border-top: 112.5px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    z-index: 3;
+}
+
+/* Letter styling */
+.letter {
+    position: relative;
+    background-color: white;
+    width: 90%;
+    height: 95%;
+    top: 5%;
+    border-radius: 10px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.6s ease-in-out, z-index 0.6s;
+    z-index: 2; /* Initially under flap */
+}
+
+/* Letter text remains readable */
+.words {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+/* Positioning for letter text */
+.line1 { top: 15%; }
+.line2 { top: 30%; }
+.line3 { top: 65%; text-align: center; }
+
 @keyframes envelopeBounce {
     0% { transform: scale(0.8); opacity: 0; }
     50% { transform: scale(1.05); opacity: 1; }
     100% { transform: scale(1); }
 }
 
-/* Letter styling with glow effect */
+#envelope {
+    animation: envelopeBounce 1s ease-in-out;
+}
+/* Open envelope */
+.open .flap {
+    transform: rotateX(180deg);
+    z-index: 2; /* Moves below the letter */
+}
+
+/* Make the letter fully visible */
 .open .letter {
     transform: translateY(-120px);
     z-index: 5;
     box-shadow: 0 0 20px rgba(255, 200, 200, 0.6);
 }
 
-/* Heart floating animations with rotation */
+/* Container for hearts */
+.hearts {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Heart styling */
+.heart {
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    opacity: 0; /* Hidden initially */
+    display: none; /* Hide until activated */
+}
+
+/* Heart shape */
+.heart:before, .heart:after {
+    position: absolute;
+    content: "";
+    background: #d00000;
+    width: 30px;
+    height: 40px;
+    left: 15px;
+    top: 0;
+    border-radius: 15px 15px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart:after {
+    left: -15px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Hearts hidden initially */
+.close .heart {
+    opacity: 0;
+    animation: none;
+    display: none;
+}
+
+/* Hearts float up when envelope is opened */
+.open .heart {
+    opacity: 1;
+    display: block;
+    animation: slideUp 5s linear infinite, sideSway 2s ease-in-out infinite alternate;
+}
+
+/* Heart floating animations */
 @keyframes slideUp {
-    0% { bottom: 0; opacity: 1; transform: rotate(0deg); }
-    100% { bottom: 600px; opacity: 0; transform: rotate(360deg); }
+    0% { 
+        bottom: 0; 
+        opacity: 1; 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        bottom: 600px; 
+        opacity: 0; 
+        transform: rotate(360deg); 
+    }
 }
 
 @keyframes sideSway {
     0% { transform: translateX(0); }
-    100% { transform: translateX(50px); }
+    25% { transform: translateX(-20px); }
+    50% { transform: translateX(20px); }
+    75% { transform: translateX(-15px); }
+    100% { transform: translateX(30px); }
 }
 
-/* Remove flower explosion and replace with bouquet animation */
-.bouquet-container {
-    position: absolute;
-    bottom: -150px; /* Start off-screen */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: auto;
-    transition: bottom 1.5s ease-in-out;
-}
 
-.open .bouquet-container {
-    bottom: 50px; /* Moves into view */
-}
-
-.bouquet {
-    width: 100%;
-    height: auto;
-}
-
-/* Hearts emerge from bouquet */
-.bouquet-hearts {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-}
-
-.bouquet-heart {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    width: 30px;
-    height: 30px;
+/* Flowers hidden initially */
+.flowers {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 30px;
     opacity: 0;
-    animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Flowers appear when envelope is opened */
+.open ~ .flowers {
+    opacity: 1;
+}
+
+/* Happy Women's Day text */
+.valentine {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(20, 20, 20);
+    font-size: 70px;
+    margin: 150px;
+}
+/* Flower explosion container */
+.flower-explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Individual flower emojis */
+.flower {
+    font-size: 30px; /* Make the flowers larger */
+    position: absolute;
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.5s ease-in-out;
+}
+
+/* Flower explosion effect (random directions) */
+.open ~ .flower-explosion .flower {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: transform 1s ease-out, opacity 0.8s ease-in-out;
+}
+
+@keyframes flowerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.open ~ .flower-explosion .flower {
+    animation: flowerPulse 2s infinite ease-in-out;
 }
