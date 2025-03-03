@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var envelope = document.getElementById("envelope");
     var bouquetContainer = document.querySelector(".bouquet-container");
     var heartContainer = document.querySelector(".bouquet-hearts");
-    var bunny = document.querySelector(".bunny-container");
 
     envelope.addEventListener("click", function () {
         envelope.classList.toggle("open");
@@ -11,20 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".letter").style.transform = "translateY(-140px)";
             document.querySelector(".letter").style.zIndex = "10"; 
 
-            // Animate bouquet rising
-            bouquetContainer.style.bottom = "80px";
+            // Animate bouquet rising from the bottom
+            bouquetContainer.style.bottom = "100px";
 
-            // Remove bunny when envelope opens
-            bunny.style.opacity = "0";
-            bunny.style.pointerEvents = "none"; // Prevent clicking after it's gone
-
-            // Emit hearts
+            // Emit hearts from bouquet
             for (let i = 0; i < 10; i++) {
                 let heart = document.createElement("span");
                 heart.classList.add("bouquet-heart");
                 heart.textContent = "❤️";
 
-                let randomX = Math.random() * 100 - 50; 
+                let randomX = Math.random() * 100 - 50; // Spread hearts left & right
                 heart.style.left = `calc(50% + ${randomX}px)`;
 
                 heartContainer.appendChild(heart);
@@ -32,14 +27,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                     heart.style.opacity = "1";
                     heart.style.transform = `translateY(-600px) rotate(${Math.random() * 20 - 10}deg)`;
-                }, i * 300); 
+                }, i * 300); // Staggered effect
 
-                setTimeout(() => heart.remove(), 5000);
+                setTimeout(() => heart.remove(), 5000); // Cleanup hearts
             }
 
         } else {
             document.querySelector(".letter").style.transform = "translateY(0)";
             document.querySelector(".letter").style.zIndex = "2"; 
+
+            // Reset bouquet position
             bouquetContainer.style.bottom = "-150px";
         }
     });
