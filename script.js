@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".letter").style.zIndex = "10"; 
 
             // Animate bouquet rising from the bottom
-            bouquetContainer.style.bottom = "50px";
+            bouquetContainer.style.bottom = "100px";
 
             // Emit hearts from bouquet
             for (let i = 0; i < 10; i++) {
