@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".letter").style.zIndex = "2"; 
             bouquetContainer.style.bottom = "-150px";
 
-            // Show "Open Me" text again if closed
+            // Show "Open Me" text again if the envelope is closed
             openMeText.classList.remove("hidden");
         }
     });
