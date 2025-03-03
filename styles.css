@@ -11,6 +11,52 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Bunny container positioning */
+.bunny-container {
+    position: absolute;
+    left: 50%;
+    top: 60%; /* Adjust position above envelope */
+    transform: translateX(-50%);
+    text-align: center;
+    animation: hop 1.5s infinite ease-in-out;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Bunny emoji */
+.bunny {
+    font-size: 50px;
+    display: block;
+}
+
+/* Speech bubble */
+.speech-bubble {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Bunny hops animation */
+@keyframes hop {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -15px); } /* Hop up */
+}
+
+/* Show speech bubble on hover */
+.bunny-container:hover .speech-bubble {
+    opacity: 1;
+}
+
 /* Message for Violet - Styled beautifully */
 .for-violet {
     font-size: 26px;
