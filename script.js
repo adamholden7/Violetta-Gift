@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bouquetContainer.style.bottom = "80px";
 
             // Hide "Open Me" text
-            openMeText.style.opacity = "0";
-            openMeText.style.pointerEvents = "none";
+            openMeText.classList.add("hidden");
 
             // Emit hearts
             for (let i = 0; i < 10; i++) {
@@ -41,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".letter").style.transform = "translateY(0)";
             document.querySelector(".letter").style.zIndex = "2"; 
             bouquetContainer.style.bottom = "-150px";
+
+            // Show "Open Me" text again if closed
+            openMeText.classList.remove("hidden");
         }
     });
 });
