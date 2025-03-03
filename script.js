@@ -14,8 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Animate bouquet rising
             bouquetContainer.style.bottom = "80px";
 
-            // Hide "Open Me" text
-            openMeText.classList.add("hidden");
+            // Hide "Open Me!" smoothly
+            openMeText.style.opacity = "0";
+
+            // After the fade-out transition, completely remove it from layout
+            setTimeout(() => {
+                openMeText.style.display = "none";
+            }, 500); // Wait for fade-out transition
 
             // Emit hearts
             for (let i = 0; i < 10; i++) {
@@ -41,8 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".letter").style.zIndex = "2"; 
             bouquetContainer.style.bottom = "-150px";
 
-            // Show "Open Me" text again if the envelope is closed
-            openMeText.classList.remove("hidden");
+            // Restore "Open Me!" when envelope is closed
+            openMeText.style.display = "block"; 
+            setTimeout(() => {
+                openMeText.style.opacity = "1";
+            }, 50);
         }
     });
 });
