@@ -1,25 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     var envelope = document.getElementById("envelope");
-
-    // Create bouquet element dynamically
-    var bouquetContainer = document.createElement("div");
-    bouquetContainer.classList.add("bouquet-container");
-
-    var bouquetImg = document.createElement("img");
-    bouquetImg.src = "bouquet.png"; // Replace with the actual image path
-    bouquetImg.classList.add("bouquet");
-
-    bouquetContainer.appendChild(bouquetImg);
-    document.body.appendChild(bouquetContainer);
-
-    // Create heart container for animation
-    var heartContainer = document.createElement("div");
-    heartContainer.classList.add("bouquet-hearts");
-    document.body.appendChild(heartContainer);
+    var bouquetContainer = document.querySelector(".bouquet-container");
+    var heartContainer = document.querySelector(".bouquet-hearts");
 
     envelope.addEventListener("click", function () {
         envelope.classList.toggle("open");
-        envelope.classList.toggle("close");
 
         if (envelope.classList.contains("open")) {
             document.querySelector(".letter").style.transform = "translateY(-140px)";
@@ -28,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Animate bouquet rising from the bottom
             bouquetContainer.style.bottom = "50px";
 
-            // Emit hearts from the bouquet
-            for (let i = 0; i < 10; i++) { // Create 10 floating hearts
+            // Emit hearts from bouquet
+            for (let i = 0; i < 10; i++) {
                 let heart = document.createElement("span");
                 heart.classList.add("bouquet-heart");
                 heart.textContent = "❤️";
