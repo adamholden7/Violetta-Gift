@@ -13,7 +13,7 @@ body {
 
 .open-me-text {
     position: absolute;
-    top: 40%; /* Adjust to place above the envelope */
+    top: 30%; /* Move it higher above the envelope */
     left: 50%;
     transform: translateX(-50%);
     font-size: 26px;
@@ -24,6 +24,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     animation: pulse 1.5s infinite alternate ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /* Soft glowing animation */
@@ -31,6 +32,13 @@ body {
     0% { transform: translateX(-50%) scale(1); opacity: 1; }
     100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
 }
+
+/* Hide Open Me when envelope is open */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 
 /* Message for Violet - Styled beautifully */
