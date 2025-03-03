@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 0; i < 1000; i++) {
         let flower = document.createElement("span");
         flower.classList.add("flower");
-        flower.textContent = ["🌸", "🌹", "🌼", "🌺", "💐", "🌷", "🌻", "💮"][Math.floor(Math.random() * 8)];
+        flower.textContent = ["🌸", "🌹", "🌼", "🌺", "💐", "🌷"][Math.floor(Math.random() * 1)];
         flowerExplosion.appendChild(flower);
     }
 
