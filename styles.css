@@ -136,6 +136,39 @@ body {
     box-shadow: 0 0 20px rgba(255, 200, 200, 0.6);
 }
 
+.bouquet-container {
+    position: absolute;
+    bottom: -150px; /* Start hidden */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: auto;
+    transition: bottom 1.5s ease-in-out;
+}
+
+.bouquet {
+    width: 100%;
+    height: auto;
+}
+
+.bouquet-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.bouquet-heart {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    font-size: 30px;
+    opacity: 0;
+    transition: transform 5s linear, opacity 3s ease-out;
+}
+
 /* Container for hearts */
 .hearts {
     position: absolute;
