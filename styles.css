@@ -169,6 +169,7 @@ body {
     transition: transform 5s linear, opacity 3s ease-out;
 }
 
+
 /* Container for hearts */
 .hearts {
     position: absolute;
