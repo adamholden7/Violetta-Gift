@@ -143,8 +143,8 @@ body {
 
 /* Positioning for letter text */
 .line1 { top: 15%; }
-.line2 { top: 30%; }
-.line3 { top: 65%; text-align: center; }
+.line2 { top: 35%; }
+.line3 { top: 75%; text-align: center; }
 
 @keyframes envelopeBounce {
     0% { transform: scale(0.8); opacity: 0; }
