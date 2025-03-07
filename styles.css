@@ -15,11 +15,10 @@ body {
     position: absolute;
     top: 18%; /* Adjust for better balance */
     left: 50%;
-    transform: translateX(-50%) rotate(-3deg);
     font-size: 24px;
     font-weight: bold;
     color: white;
-    background: ff6f91;
+    background: #ff6f91;
     padding: 14px 22px;
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
