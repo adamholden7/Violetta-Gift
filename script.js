@@ -4,12 +4,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var heartContainer = document.querySelector(".bouquet-hearts");
     var openMeText = document.querySelector(".open-me-text");
 
+    // Add bounce effect to "Open Me" text
+    function bounceOpenMe() {
+        openMeText.style.animation = "bounceEffect 1.5s infinite alternate ease-in-out";
+    }
+    bounceOpenMe();
+
     envelope.addEventListener("click", function () {
         envelope.classList.toggle("open");
 
         if (envelope.classList.contains("open")) {
             document.querySelector(".letter").style.transform = "translateY(-140px)";
-            document.querySelector(".letter").style.zIndex = "10"; 
+            document.querySelector(".letter").style.zIndex = "10";
 
             // Animate bouquet rising
             bouquetContainer.style.bottom = "80px";
@@ -28,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 heart.classList.add("bouquet-heart");
                 heart.textContent = "❤️";
 
-                let randomX = Math.random() * 100 - 50; 
+                let randomX = Math.random() * 100 - 50;
                 heart.style.left = `calc(50% + ${randomX}px)`;
 
                 heartContainer.appendChild(heart);
@@ -36,18 +42,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                     heart.style.opacity = "1";
                     heart.style.transform = `translateY(-600px) rotate(${Math.random() * 20 - 10}deg)`;
-                }, i * 300); 
+                }, i * 300);
 
                 setTimeout(() => heart.remove(), 5000);
             }
 
         } else {
             document.querySelector(".letter").style.transform = "translateY(0)";
-            document.querySelector(".letter").style.zIndex = "2"; 
+            document.querySelector(".letter").style.zIndex = "2";
             bouquetContainer.style.bottom = "-150px";
 
             // Restore "Open Me!" when envelope is closed
-            openMeText.style.display = "block"; 
+            openMeText.style.display = "block";
             setTimeout(() => {
                 openMeText.style.opacity = "1";
             }, 50);
