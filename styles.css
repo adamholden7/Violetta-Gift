@@ -12,19 +12,15 @@ body {
 }
 
 .open-me-text {
-    position: absolute;
-    top: 20%; /* Move it higher so it's always above the envelope */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 22px; /* Reduce size slightly for mobile */
-    font-weight: bold;
-    color: #6a0572;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px 16px;
-    border-radius: 12px;
+    background: #ff6f91;
+    color: white;
+    font-size: 24px;
+    padding: 15px 25px;
+    border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    animation: pulse 1.5s infinite alternate ease-in-out;
-    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    animation: bounce 1.5s infinite alternate;
     z-index: 100; /* Ensure it's on top of the envelope */
 }
 
