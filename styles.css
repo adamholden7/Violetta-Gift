@@ -15,7 +15,6 @@ body {
     position: absolute;
     top: 18%;
     left: 50%;
-    transform: translateX(-50%) rotate(-3deg); /* Keep slight tilt but center properly */
     font-size: 24px;
     font-weight: bold;
     color: white;
