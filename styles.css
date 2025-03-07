@@ -13,25 +13,35 @@ body {
 
 .open-me-text {
     position: absolute;
-    top: 20%; /* Move it higher so it's always above the envelope */
+    top: 15%; /* Adjusted for a sleeker banner placement */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 22px; /* Reduce size slightly for mobile */
+    font-size: 24px; /* Slightly larger for readability */
     font-weight: bold;
-    color: #6a0572;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px 16px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    animation: pulse 1.5s infinite alternate ease-in-out;
-    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
-    z-index: 100; /* Ensure it's on top of the envelope */
+    color: #fff;
+    background: linear-gradient(135deg, #ff4f73, #ff85a2);
+    padding: 12px 20px;
+    border-radius: 30px; /* Makes it look more like a soft button */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bounceGlow 1.5s infinite ease-in-out;
+    z-index: 100; /* Ensures it's always above the envelope */
 }
 
-/* Soft glowing animation */
-@keyframes pulse {
-    0% { transform: translateX(-50%) scale(1); opacity: 1; }
-    100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+/* Subtle bounce & glow animation */
+@keyframes bounceGlow {
+    0% { transform: translateX(-50%) translateY(0) scale(1); box-shadow: 0 4px 12px rgba(255, 79, 115, 0.4); }
+    50% { transform: translateX(-50%) translateY(-5px) scale(1.05); box-shadow: 0 6px 15px rgba(255, 133, 162, 0.6); }
+    100% { transform: translateX(-50%) translateY(0) scale(1); box-shadow: 0 4px 12px rgba(255, 79, 115, 0.4); }
+}
+
+/* Hover effect for better interaction */
+.open-me-text:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 79, 115, 0.5);
+    background: linear-gradient(135deg, #ff3c60, #ff7b98);
 }
 
 /* Hide Open Me when envelope is open */
@@ -41,6 +51,7 @@ body {
     display: none; /* Fully removes it from layout */
     transition: opacity 0.5s ease-in-out;
 }
+
 
 
 /* Message for Violet - Styled beautifully */
