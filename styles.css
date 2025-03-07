@@ -12,16 +12,21 @@ body {
 }
 
 .open-me-text {
-    background: #ff6f91;
-    color: white;
+    position: absolute;
+    top: 18%; /* Adjust for better balance */
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
     font-size: 24px;
-    padding: 15px 25px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    color: white;
+    background: ff6f91;
+    padding: 14px 22px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-    animation: bounce 1.5s infinite alternate;
-    z-index: 100; /* Ensure it's on top of the envelope */
+    animation: bounceGlow 1.5s infinite ease-in-out, subtleRotate 4s infinite alternate ease-in-out;
+    z-index: 100;
 }
 
 /* Soft glowing animation */
