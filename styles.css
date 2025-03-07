@@ -15,10 +15,11 @@ body {
     position: absolute;
     top: 18%; /* Adjust for better balance */
     left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
     font-size: 24px;
     font-weight: bold;
     color: white;
-    background: #ff6f91;
+    background: #ff6f91; /* Corrected background color */
     padding: 14px 22px;
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -26,6 +27,7 @@ body {
     cursor: pointer;
     animation: bounceGlow 1.5s infinite ease-in-out, subtleRotate 4s infinite alternate ease-in-out;
     z-index: 100;
+    opacity: 1; /* Ensures full opacity */
 }
 
 /* Soft glowing animation */
