@@ -13,9 +13,9 @@ body {
 
 .open-me-text {
     position: absolute;
-    top: 18%; /* Adjusted height */
+    top: 18%;
     left: 50%;
-    transform: translateX(-50%) rotate(-3deg); /* Centering properly */
+    transform: translateX(-50%) rotate(-3deg); /* Keep slight tilt but center properly */
     font-size: 24px;
     font-weight: bold;
     color: white;
@@ -28,8 +28,9 @@ body {
     animation: bounceGlow 1.5s infinite ease-in-out, subtleRotate 4s infinite alternate ease-in-out;
     z-index: 100;
     opacity: 1;
-    width: max-content; /* Ensures no extra spacing */
+    width: max-content;
     text-align: center;
+    transform-origin: center; /* Ensures rotation happens around the center */
 }
 
 /* Soft glowing animation */
