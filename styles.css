@@ -142,8 +142,8 @@ body {
 }
 
 /* Positioning for letter text */
-.line1 { top: 10%; }
-.line2 { top: 30%; }
+.line1 { top: 5%; }
+.line2 { top: 15%; }
 .line3 { top: 75%; text-align: center; }
 
 @keyframes envelopeBounce {
